@@ -1,0 +1,44 @@
+/* The track of the switch */
+.custom-switch {
+  width: 3.5rem !important;
+  height: 1.75rem !important;
+  cursor: pointer;
+  background-image: none !important; /* Remove Bootstrap's default dot */
+  background-color: #ced4da;
+  border: none;
+  position: relative;
+}
+
+/* The handle (the dot) */
+.custom-switch::after {
+  content: "☀️"; /* Default icon */
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  width: 1.4rem;
+  height: 1.4rem;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* When checked (Dark Mode) */
+.custom-switch:checked {
+  background-color: #444 !important;
+}
+
+.custom-switch:checked::after {
+  content: "🌙"; /* Change to moon */
+  transform: translateX(1.75rem); /* Move handle to the right */
+  background-color: #212529;
+}
+
+/* Optional: Smooth transition for the track */
+.form-check-input {
+    transition: background-color 0.3s ease;
+}

@@ -1,3 +1,93 @@
-*{
+* {
     font-family: "Patua One", serif;
+}
+
+:root {
+    --svg-fill: #076726;
+    --bg-color: white;
+    --text-color-background: black;
+    --text-color-svg: white;
+    --link-color: #076726;
+    --form-bg-color: whitesmoke;
+    --form-input: #07862f;
+    --btn-hover: #05461a;
+}
+
+[data-theme='dark'] {
+    --svg-fill: #676464;
+    --bg-color: black;
+    --text-color-background: white;
+    --text-color-svg: white;
+    --link-color: #803BF7;
+    --form-bg-color: #1B1C1C;
+    --form-input: #676464;
+    --btn-hover: #4106a5;
+}
+
+.custom-bg {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color-svg) !important;
+    transition: background-color 0.3s ease;
+}
+
+.custom-svg {
+    color: var(--text-color-svg);
+}
+
+.custom-svg path {
+    fill: var(--svg-fill);
+    transition: fill 0.3s ease;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.link-color {
+    font-size: 20px;
+    color: var(--link-color);
+    transition: color 0.3s ease;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.link-color:hover {
+    color: var(--btn-hover);
+    text-decoration: underline !important;
+}
+
+.link-color-btn {
+    background-color: var(--link-color);
+    transition: background-color 0.3s ease;
+    width: 15vw;
+}
+
+.link-color-btn:hover {
+    background-color: var(--btn-hover);
+}
+
+.form-text-color {
+    color: var(--text-color-background);
+}
+
+.auth-form {
+    border: 2px solid var(--text-color-background);
+    background-color: var(--form-bg-color);
+    transition: background-color 0.3s ease;
+}
+
+.input {
+    background-color: var(--form-input);
+    transition: background-color 0.3s ease;
+}
+
+.input:focus {
+    background-color: var(--form-input) !important;
+    color: white !important;
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(7, 103, 38, 0.25);
+}
+
+.input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }

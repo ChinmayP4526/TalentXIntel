@@ -4,17 +4,13 @@ import ThemeToggle from '../ThemeToggle'
 import eye_open from "../../assets/eye_open.png"
 import eye_closed from "../../assets/eye_closed.png"
 import {Link} from "react-router-dom"
-import { motion } from 'framer-motion';
-
-
-const LoginStudent = () => {
+const LoginRecruit = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     return (
         <div className="login-wrapper custom-bg">
             <div >
-                
                 <div className="position-absolute top-0 start-0 w-100 p-3" style={{ zIndex: 10 }}>
                     <ThemeToggle />
                 </div>
@@ -31,8 +27,8 @@ const LoginStudent = () => {
 
             </div>
             <div className='greet'>
-                <h2>Hello Friend !</h2>
-                <p>Continue your journey</p><p> toward industry-ready </p ><p>skills</p>
+                <h2>Hello Recruiter !</h2>
+                <p>Access talent insights</p><p> and role-ready </p ><p>candidates</p>
             </div>
 
 
@@ -40,14 +36,14 @@ const LoginStudent = () => {
                 {/* Login FORM */}
                 <div className='flex flex-column'>
                     <h2>Login</h2>
-                    <p>as a Student</p>
-                    <p className='fs-6'>Don't have an Account? <Link to="/studsignup"><span className='link-color'>Signup</span></Link></p>
+                    <p>as a Recruiter</p>
+                    <p className='fs-6'>Don't have an Account? <Link to="/recruitsignup"><span className='link-color'>Signup</span></Link></p>
                 </div>
                 <div>
                     <form className='auth-form'>
                         <div className="mb-3">
-                            <label htmlFor="student-email" className="form-label">Email address</label>
-                            <input type="email" className="form-control input" id="student-email" aria-describedby="email" placeholder="john@example.com" value={email} onChange={({target})=>setEmail(target.value)} />
+                            <label htmlFor="recruit-email" className="form-label">Email address</label>
+                            <input type="email" className="form-control input" id="recruit-email" aria-describedby="email" placeholder="john@example.com" value={email} onChange={({target})=>setEmail(target.value)} />
                            
                             <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                         </div>
@@ -81,7 +77,7 @@ const LoginStudent = () => {
 
                     <div className='my-2 forgot'>Forgot your password ? </div>
                     <button className='btn link-color-btn text-white my-1'>Login</button>
-                    <p className='fs-6 my-2'>Not a Student? <Link to="/recruitlogin"><span className='link-color'>Login</span></Link>/<Link to="/recruitsignup"><span className='link-color'>Signup</span></Link> as a Recruiter</p>
+                    <p className='fs-6 my-2'>Not a Recruiter? <Link to="/studlogin"><span className='link-color'>Login</span></Link>/<Link to="/studsignup"><span className='link-color'>Signup</span></Link> as a Student</p>
                 </div>
             </div>
 
@@ -89,7 +85,10 @@ const LoginStudent = () => {
     )
 }
 
-export default LoginStudent
+export default LoginRecruit
 
 
 
+
+
+// LoginRecruit
