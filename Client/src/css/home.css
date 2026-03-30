@@ -15,9 +15,9 @@
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0; 
+  bottom: 0;
   /* Remove height: 90vh; */
-  
+
   background-color: black;
   opacity: 0.4;
   z-index: 1;
@@ -27,18 +27,57 @@
 .edu {
   display: block;
   width: 100%;
-  height: auto; /* The container's height is now driven by the image */
-  object-fit: contain;
+  height: auto;
+  /*The container's height is now driven by the image */
+  object-fit: cover;
 }
 
 .main-content {
-  position: relative; /* Just to be safe, ensures it stays in flow */
-  z-index: 2;         /* Keeps text above any stray shadows */
+  position: relative;
+  /* Just to be safe, ensures it stays in flow */
+  z-index: 2;
+  /* Keeps text above any stray shadows */
   width: 90vw;
   margin: 0 auto;
   padding: 20px 0;
   line-height: 1.6;
 }
-.heads{
-  margin-bottom: 30px;
+
+.heads {
+  margin-top: 20px;
+  margin-bottom: 55px;
+  font-size: 50px;
+}
+
+.hero-texts {
+  z-index: 100;
+  position: absolute;
+  top: 20%;
+}
+
+.hero-texts>p {
+  width: 70vw;
+}
+
+.start {
+  background-color: var(--login-nav);
+  color: var(--login-nav-outline);
+  position: absolute;
+  left: 60%;
+  width: 14%;
+  text-align: center;
+}
+
+.btn-icon {
+  width: 20px;
+  filter: var(--icon-filter);
+}
+.btn-icon:hover{
+  filter: var(--icon-filter-hov);
+}
+.start:hover {
+  background-color: var(--signup-nav);
+  color: var(--signup-nav-outline);
+  border: 3px solid var(--signup-nav-outline);
+
 }
