@@ -5,47 +5,82 @@ import education_hats_throwing from "../assets/education_hats_throwing.jpeg";
 const WorkTalentXIntel = () => {
     return (
         <div className="work-container">
+
             <div className="black-op"></div>
 
             <img
                 className="edu"
                 src={education_hats_throwing}
-                alt="education hats throwing"
+                alt="education hats"
             />
 
-            <div className="work-texts">
+            {/* LEFT CONTENT */}
+            <div className="work-left">
                 <h1>How TalentXIntel Works ?</h1>
+
+                <p className="work-subtitle">
+                    From resume upload to career readiness — your path is guided step by step.
+                </p>
+
+                <div className="roadmap">
+
+                    <div className="roadmap-item">
+                        <div className="circle">1</div>
+                        <div className="content">
+                            <div className="step-box">Create Your Skill Profile</div>
+                            <p>Upload your resume and list your skills in minutes.</p>
+                        </div>
+                    </div>
+
+                    <div className="roadmap-item">
+                        <div className="circle">2</div>
+                        <div className="content">
+                            <div className="step-box">Select Your Target Role</div>
+                            <p>Choose a job role and let AI analyze your readiness.</p>
+                        </div>
+                    </div>
+
+                    <div className="roadmap-item">
+                        <div className="circle">3</div>
+                        <div className="content">
+                            <div className="step-box">Identify Skill Gaps</div>
+                            <p>See missing skills, weak areas, and priority improvements.</p>
+                        </div>
+                    </div>
+
+                    <div className="roadmap-item">
+                        <div className="circle">4</div>
+                        <div className="content">
+                            <div className="step-box">Follow a Personalized Roadmap</div>
+                            <p>Get a structured plan to become industry ready.</p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
-            <div className="steps">
-                <div className="step-item">
-                    <div className="step-box">
-                        <h3>Step 1 : Create Your Skill Profile</h3>
-                    </div>
-                    <p>Upload your resume and list your skills in minutes.</p>
+            {/* RIGHT SIDE AI CARD */}
+            <div className="ai-card">
+                <h3>AI Analysis Preview</h3>
+
+                <div className="ai-item">
+                    <span>Resume Score</span>
+                    <strong>82%</strong>
                 </div>
 
-                <div className="step-item">
-                    <div className="step-box">
-                        <h3>Step 2 : Select Your Target Role</h3>
-                    </div>
-                    <p>Choose a job role and let our engine analyze your readiness.</p>
+                <div className="ai-item">
+                    <span>Role Match</span>
+                    <strong>Frontend Dev</strong>
                 </div>
 
-                <div className="step-item">
-                    <div className="step-box">
-                        <h3>Step 3 : Identify Skill Gaps</h3>
-                    </div>
-                    <p>See missing skills, weak areas, and priority improvements.</p>
+                <div className="ai-item">
+                    <span>Missing Skills</span>
+                    <strong>React, System Design</strong>
                 </div>
 
-                <div className="step-item">
-                    <div className="step-box">
-                        <h3>Step 4 : Follow a Personalized Roadmap</h3>
-                    </div>
-                    <p>Get a structured plan to move closer to industry readiness.</p>
-                </div>
+                <button className="ai-btn">View Full Report →</button>
             </div>
+
         </div>
     )
 }
