@@ -25,11 +25,11 @@
 }
 
 .edu {
-  display: block;
+  /* display: block; */
   width: 100%;
   height: auto;
   /*The container's height is now driven by the image */
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .main-content {
@@ -65,19 +65,18 @@
   position: absolute;
   left: 60%;
   width: 14%;
+  margin-top: 20px;
   text-align: center;
 }
 
 .btn-icon {
   width: 20px;
-  filter: var(--icon-filter);
-}
-.btn-icon:hover{
-  filter: var(--icon-filter-hov);
+  /* filter: var(--icon-filter); */
 }
 .start:hover {
   background-color: var(--signup-nav);
   color: var(--signup-nav-outline);
   border: 3px solid var(--signup-nav-outline);
+
 
 }

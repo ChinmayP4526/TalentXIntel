@@ -33,13 +33,7 @@ const Home = () => {
         </button>
       </div>
 
-      <div className="main-content">
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Consequuntur iure modi ab minima tempora, quae, sunt quasi
-          accusantium fugit aspernatur porro...
-        </p>
-      </div>
+      
     </div>
   );
 };
