@@ -48,13 +48,17 @@
 }
 
 .login-content h2 {
-  font-size: 64px;
+  font-size: clamp(2rem, 4vw, 3.5rem);
 }
 
 .login-content p {
-  font-size: 24px;
+  font-size: 1.1rem;
 }
-
+.form-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
 .forgot {
   color: grey;
   cursor: pointer;
@@ -78,6 +82,7 @@ form {
 .input {
   color: white;
   border: 1px solid black;
+  
 }
 
 .input-group-wrapper {
@@ -105,4 +110,7 @@ form {
 /* Ensure the text doesn't overlap the icon */
 .input.pe-5 {
   padding-right: 45px !important;
+}
+.recruit-form{
+  padding: 20px;
 }

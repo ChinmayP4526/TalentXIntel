@@ -4,7 +4,6 @@ import ThemeToggle from '../ThemeToggle'
 import eye_open from "../../assets/eye_open.png"
 import eye_closed from "../../assets/eye_closed.png"
 import {Link} from "react-router-dom"
-import { motion } from 'framer-motion';
 
 
 const LoginStudent = () => {

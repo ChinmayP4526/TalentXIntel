@@ -3,14 +3,21 @@
 }
 
 :root {
-    --svg-fill: #076726;
-    --bg-color: white;
+
+    --svg-fill: #20948B;
+    --bg-color: #F2F0EF;
     --text-color-background: black;
     --text-color-svg: white;
-    --link-color: #076726;
+    --link-color: #20948B;
     --form-bg-color: whitesmoke;
-    --form-input: #07862f;
-    --btn-hover: #05461a;
+    --form-input: #20948B;
+    --btn-hover: #04554e;
+    --bg-navbar: #20948B;
+    --login-nav: #186a63;
+    --login-nav-outline: white;
+    --signup-nav: white;
+    --signup-nav-outline: #076726;
+    --home-bg-color: rgb(197 238 223);
 }
 
 [data-theme='dark'] {
@@ -22,6 +29,11 @@
     --form-bg-color: #1B1C1C;
     --form-input: #676464;
     --btn-hover: #4106a5;
+    --bg-navbar: #1E1E1E;
+    --login-nav: #5702E9;
+    --login-nav-outline: white;
+    --signup-nav: white;
+    --signup-nav-outline: #5702E9;
 }
 
 .custom-bg {

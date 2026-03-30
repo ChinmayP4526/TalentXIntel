@@ -1,0 +1,44 @@
+.hero-container {
+
+  position: relative;
+  width: 99vw;
+  height: 90vh;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-top: 78px;
+}
+
+.black-op {
+  position: absolute;
+  /* This is the magic fix: */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; 
+  /* Remove height: 90vh; */
+  
+  background-color: black;
+  opacity: 0.4;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.edu {
+  display: block;
+  width: 100%;
+  height: auto; /* The container's height is now driven by the image */
+  object-fit: contain;
+}
+
+.main-content {
+  position: relative; /* Just to be safe, ensures it stays in flow */
+  z-index: 2;         /* Keeps text above any stray shadows */
+  width: 90vw;
+  margin: 0 auto;
+  padding: 20px 0;
+  line-height: 1.6;
+}
+.heads{
+  margin-bottom: 30px;
+}

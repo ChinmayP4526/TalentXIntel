@@ -4,11 +4,21 @@
   height: 1.75rem !important;
   cursor: pointer;
   background-image: none !important; /* Remove Bootstrap's default dot */
-  background-color: #ced4da;
+  background-color: #1ee4d4;
   border: none;
   position: relative;
 }
+.theme-switch-wrapper {
+    /* Ensures the text color reacts to your root variables */
+    color: white;
+    font-weight: 500;
+}
 
+.theme-label {
+    font-size: 1.1rem;
+    min-width: 85px; /* Prevents layout jump when text changes length */
+    text-align: right;
+}
 /* The handle (the dot) */
 .custom-switch::after {
   content: "☀️"; /* Default icon */
