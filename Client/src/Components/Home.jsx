@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import "../css/home.css";
 import education_image from "../assets/education_image.jpg";
 import right_arrow from "../assets/right-arrow.png"
-// import education_hats_throwing from "../assets/education_hats_throwing.jpeg";
+import WorkTalentXIntel from "./WorkTalentXIntel";
 
 const Home = () => {
   return (
@@ -32,6 +32,8 @@ const Home = () => {
           <img src={right_arrow} alt="arrow" className="btn-icon" />
         </button>
       </div>
+
+      <WorkTalentXIntel/>
 
       
     </div>

@@ -32,17 +32,6 @@
   object-fit: contain;
 }
 
-.main-content {
-  position: relative;
-  /* Just to be safe, ensures it stays in flow */
-  z-index: 2;
-  /* Keeps text above any stray shadows */
-  width: 90vw;
-  margin: 0 auto;
-  padding: 20px 0;
-  line-height: 1.6;
-}
-
 .heads {
   margin-top: 20px;
   margin-bottom: 55px;
@@ -80,3 +69,4 @@
 
 
 }
+
