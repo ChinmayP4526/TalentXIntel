@@ -4,6 +4,7 @@ import "../css/home.css";
 import education_image from "../assets/education_image.jpg";
 import right_arrow from "../assets/right-arrow.png"
 import WorkTalentXIntel from "./WorkTalentXIntel";
+import Cards_Carousel from "./Cards_Carousel";
 
 const Home = () => {
   return (
@@ -33,9 +34,10 @@ const Home = () => {
         </button>
       </div>
 
-      <WorkTalentXIntel/>
+      <WorkTalentXIntel />
+      <h1 className="getFromUs">What you get from us?</h1>
+      <Cards_Carousel />
 
-      
     </div>
   );
 };

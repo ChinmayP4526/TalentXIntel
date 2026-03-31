@@ -70,3 +70,8 @@
 
 }
 
+.getFromUs{
+  color: var(--text-color-background);
+  margin: 30px;
+  font-size: 4rem;
+}
