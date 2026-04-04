@@ -5,6 +5,7 @@ import education_image from "../assets/education_image.jpg";
 import right_arrow from "../assets/right-arrow.png"
 import WorkTalentXIntel from "./WorkTalentXIntel";
 import Cards_Carousel from "./Cards_Carousel";
+// import Cards3DCarousel from './Cards3DCarousel'
 
 const Home = () => {
   return (
@@ -35,9 +36,12 @@ const Home = () => {
       </div>
 
       <WorkTalentXIntel />
-      <h1 className="getFromUs">What you get from us?</h1>
-      <Cards_Carousel />
-
+      <div className="get-section">
+        <h1 className="getFromUs">What you get from us?</h1>
+        {/* <Cards3DCarousel /> */}
+        <Cards_Carousel/>
+      </div>
+      <br />
     </div>
   );
 };
