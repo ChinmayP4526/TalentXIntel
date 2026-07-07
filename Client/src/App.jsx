@@ -6,6 +6,7 @@ import ProfileCreation from './Components/ProfileCreation'
 import SignupStudent from './Components/StudentAuth/SignupStudent'
 import LoginRecruit from './Components/RecruiterAuth/LoginRecruit'
 import SignupRecruit from './Components/RecruiterAuth/SignupRecruit'
+
 function App() {
 
   return (

@@ -20,7 +20,9 @@
     --signup-nav-outline: #186a63;
     --home-bg-color: rgb(197 238 223);
     --icon-filter: brightness(0) invert(1);
-     --icon-filter-hov: invert(41%) sepia(82%) saturate(2970%) hue-rotate(253deg) brightness(101%) contrast(96%);
+    --icon-filter-hov: invert(41%) sepia(82%) saturate(2970%) hue-rotate(253deg) brightness(101%) contrast(96%);
+    --carousel-text: #ffffff;
+    --carousel-background: #186a63;
 }
 
 [data-theme='dark'] {
@@ -38,7 +40,9 @@
     --login-nav-outline: white;
     --signup-nav: white;
     --signup-nav-outline: #5702E9;
-   
+    --carousel-text: white;
+    --carousel-background: #5702E9;
+
 }
 
 .custom-bg {

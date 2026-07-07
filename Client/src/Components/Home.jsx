@@ -4,9 +4,7 @@ import "../css/home.css";
 import education_image from "../assets/education_image.jpg";
 import right_arrow from "../assets/right-arrow.png"
 import WorkTalentXIntel from "./WorkTalentXIntel";
-import Cards_Carousel from "./Cards_Carousel";
-// import Cards3DCarousel from './Cards3DCarousel'
-
+import Carousel from "./Carousel";
 const Home = () => {
   return (
     <div className="home-wrapper">
@@ -38,8 +36,9 @@ const Home = () => {
       <WorkTalentXIntel />
       <div className="get-section">
         <h1 className="getFromUs">What you get from us?</h1>
-        {/* <Cards3DCarousel /> */}
-        <Cards_Carousel/>
+        <div className="mt-5">
+          <Carousel />
+        </div>
       </div>
       <br />
     </div>
