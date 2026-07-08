@@ -4,7 +4,7 @@ import ThemeToggle from '../ThemeToggle'
 import eye_open from "../../assets/eye_open.png"
 import eye_closed from "../../assets/eye_closed.png"
 import {Link} from "react-router-dom"
-const LoginRecruit = () => {
+const LoginRecruit = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);

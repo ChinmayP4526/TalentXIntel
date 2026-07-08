@@ -6,7 +6,7 @@ import eye_closed from "../../assets/eye_closed.png"
 import { Link } from "react-router-dom"
 
 
-const SignupStudent = () => {
+const SignupStudent = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
