@@ -7,9 +7,8 @@ import SignupStudent from './Components/StudentAuth/SignupStudent'
 import LoginRecruit from './Components/RecruiterAuth/LoginRecruit'
 import SignupRecruit from './Components/RecruiterAuth/SignupRecruit'
 import Dashboard from './Components/Dashboard'
-import Alert from './components/Alert';
 import { useState } from 'react'
-
+import Alert from "./Components/Alert"
 function App() {
   const [alert, setAlert] = useState(null);
   const showAlert = (message, type) => {
@@ -27,6 +26,7 @@ function App() {
     <>
       <div>
         <Router>
+          <Alert alert={alert} />
           <Routes>
             <Route exact path="/studlogin" element={<LoginStudent showAlert={showAlert}/>} />
             <Route exact path="/studsignup" element={<SignupStudent showAlert={showAlert}/>} />

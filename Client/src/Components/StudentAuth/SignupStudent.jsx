@@ -3,15 +3,56 @@ import "../../css/auth.css"
 import ThemeToggle from '../ThemeToggle'
 import eye_open from "../../assets/eye_open.png"
 import eye_closed from "../../assets/eye_closed.png"
-import { Link } from "react-router-dom"
-
+import { Link, useNavigate } from "react-router-dom"
+const BASE_URL = "http://localhost:5000"
 
 const SignupStudent = (props) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+
   const [showPassword, setShowPassword] = useState(false);
+
+  const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" })
+  const navigate = useNavigate()
+
+  const onChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value })
+  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (credentials.password !== credentials.cpassword) {
+      props.showAlert("Passwords do not match", "danger");
+      return;
+    }
+    try {
+
+      const response = await fetch(`${BASE_URL}/api/studauth/createUser`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password })
+      })
+
+      const json = await response.json()
+      console.log(json);
+      if (json.success) {
+        localStorage.setItem('token', json.authToken)
+        props.showAlert("User Created Successfully", "success")
+        navigate("/dashboard")
+      }
+      else {
+        props.showAlert(json.error || "Signup Failed", "danger");
+      }
+    }
+    catch (error) {
+
+      console.error(error);
+
+      props.showAlert("Server Error", "danger");
+
+    }
+
+  }
+
   return (
     <div className="login-wrapper custom-bg">
       <div >
@@ -45,16 +86,16 @@ const SignupStudent = (props) => {
           <p className='fs-6'>Already have an Account? <Link to="/studlogin"><span className='link-color'>Login</span></Link></p>
         </div>
         <div>
-          <form className='auth-form'>
+          <form className='auth-form' onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="student-name" className="form-label">Full Name</label>
-              <input type="text" className="form-control input" id="student-name" placeholder="john wick" value={name} onChange={({ target }) => setName(target.value)} />
-
-
+              <input type="text" className="form-control input" id="student-name" placeholder="john wick" name='name' onChange={onChange}
+                value={credentials.name} />
             </div>
+
             <div className="mb-3">
               <label htmlFor="student-email" className="form-label">Email address</label>
-              <input type="email" className="form-control input" id="student-email" aria-describedby="email" placeholder="john@example.com" value={email} onChange={({ target }) => setEmail(target.value)} />
+              <input type="email" className="form-control input" id="student-email" aria-describedby="email" placeholder="john@example.com" onChange={onChange} name='email' value={credentials.email} />
 
             </div>
             <div className="mb-3">
@@ -65,12 +106,15 @@ const SignupStudent = (props) => {
                   className="form-control input pe-5" // pe-5 adds padding for the icon
                   id="password"
                   placeholder="Min 5 Characters"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  name='password'
+                  minLength={5}
+                  value={credentials.password}
+                  required
+                  onChange={onChange}
                 />
 
                 {/* Only show icon if there is text in the password field */}
-                {password.length > 0 && (
+                {credentials.password.length > 0 && (
                   <img
                     src={showPassword ? eye_open : eye_closed}
                     alt="toggle password"
@@ -87,12 +131,15 @@ const SignupStudent = (props) => {
                   type={showPassword ? "text" : "password"}
                   className="form-control input pe-5" // pe-5 adds padding for the icon
                   id="confirm-password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  name='cpassword'
+                  onChange={onChange}
+                  value={credentials.cpassword}
+                  minLength={5}
+                  required
                 />
 
                 {/* Only show icon if there is text in the password field */}
-                {password.length > 0 && (
+                {credentials.cpassword.length > 0 && (
                   <img
                     src={showPassword ? eye_open : eye_closed}
                     alt="toggle password"
@@ -103,12 +150,12 @@ const SignupStudent = (props) => {
               </div>
             </div>
 
-          </form>
-        </div>
-        <div className='flex flex-column my-2'>
+            <div className='flex flex-column my-2'>
 
-          <button className='btn link-color-btn text-white my-2'>Create Account</button>
-          <p className='fs-6 my-2'>Not a Student? <Link to="/recruitlogin"><span className='link-color'>Login</span></Link>/<Link to="/recruitsignup"><span className='link-color'>Signup</span></Link> as a Recruiter</p>
+              <button type="submit" className='btn link-color-btn text-white my-2'>Create Account</button>
+              <p className='fs-6 my-2'>Not a Student? <Link to="/recruitlogin"><span className='link-color'>Login</span></Link>/<Link to="/recruitsignup"><span className='link-color'>Signup</span></Link> as a Recruiter</p>
+            </div>
+          </form>
         </div>
       </div>
 
