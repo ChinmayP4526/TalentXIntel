@@ -5,7 +5,7 @@ import education_image from "../assets/education_image.jpg";
 import right_arrow from "../assets/right-arrow.png"
 import WorkTalentXIntel from "./WorkTalentXIntel";
 import Carousel from "./Carousel";
-const Home = () => {
+const LandingPage = () => {
   return (
     <div className="home-wrapper">
       <Navbar />
@@ -45,4 +45,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default LandingPage;

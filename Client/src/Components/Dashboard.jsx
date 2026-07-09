@@ -1,11 +1,17 @@
-import React from 'react'
+import React from "react";
+import NavbarDashboard from "./NavbarDashboard";
+import { Outlet } from "react-router-dom";
 
-const Dashboard = (props) => {
+const Dashboard = () => {
   return (
-    <div>
-      Dashboard
-    </div>
-  )
-}
+    <>
+      <NavbarDashboard />
 
-export default Dashboard
+      <div className="dashboard-content mt-5 pt-4">
+        <Outlet />
+      </div>
+    </>
+  );
+};
+
+export default Dashboard;

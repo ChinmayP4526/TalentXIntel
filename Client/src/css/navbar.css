@@ -1,4 +1,3 @@
-
 .logo {
     width: 50px;
     height: 50px;
@@ -10,28 +9,53 @@
     align-items: center;
 }
 
-.navbar{
+.navbar {
     background-color: var(--bg-navbar);
 }
-.log{
+
+.log {
     background-color: var(--login-nav);
     color: var(--login-nav-outline);
     border: 3px solid var(--login-nav-outline);
 }
-.log:hover{
-    
+
+.log:hover {
+
     background-color: var(--signup-nav);
     color: var(--signup-nav-outline);
     border: 3px solid var(--signup-nav-outline);
 }
-.sign{
+
+.sign {
     background-color: var(--signup-nav);
     color: var(--signup-nav-outline);
     border: 3px solid var(--signup-nav-outline);
 }
-.sign:hover{
+
+.sign:hover {
     background-color: var(--login-nav);
     color: var(--login-nav-outline);
     border: 3px solid var(--login-nav-outline);
 
+}
+
+
+
+.dashboard-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-nav-links li a {
+    text-decoration: none;
+    color: white;
+}
+.dashboard-nav-links li a.active-link {
+    color: var(--login-nav);
+    /* border-bottom: 2px solid #a855f7; */
+    padding-bottom: 4px;
 }
