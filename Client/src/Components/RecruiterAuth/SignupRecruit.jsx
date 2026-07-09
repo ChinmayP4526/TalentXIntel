@@ -3,17 +3,56 @@ import "../../css/auth.css"
 import ThemeToggle from '../ThemeToggle'
 import eye_open from "../../assets/eye_open.png"
 import eye_closed from "../../assets/eye_closed.png"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
-
+const BASE_URL = "http://localhost:5000"
 const SignupRecruit = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  
+
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [role, setRole] = useState("");
   const [company, setCompany] = useState("");
+  const [credentials, setCredentials] = useState({ name: "", email: "", password: "", role: "", company: "" })
+  const navigate = useNavigate()
+
+  const onChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value })
+  }
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+
+      const response = await fetch(`${BASE_URL}/api/recruitauth/createUser`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, role: credentials.role, company: credentials.company })
+
+      })
+      const json = await response.json();
+      console.log(json);
+      if (json.success) {
+        localStorage.setItem('token', json.authToken)
+        props.showAlert("User Created Successfully", "success")
+        navigate("/recruitDashboard")
+      }
+      else {
+        props.showAlert(json.error || "Signup Failed", "danger");
+      }
+    }
+    catch (error) {
+      console.error(error);
+
+      props.showAlert("Server Error", "danger");
+
+    }
+
+  }
+
   return (
     <div className="login-wrapper custom-bg">
       <div >
@@ -46,16 +85,17 @@ const SignupRecruit = (props) => {
           <p className='fs-6'>Already have an Account? <Link to="/recruitlogin"><span className='link-color'>Login</span></Link></p>
         </div>
         <div>
-          <form className='auth-form recruit-form'>
+          <form className='auth-form recruit-form' onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="student-name" className="form-label">Full Name</label>
-              <input type="text" className="form-control input" id="student-name" placeholder="john wick" value={name} onChange={({ target }) => setName(target.value)} />
+              <input type="text" className="form-control input" id="student-name" name='name' placeholder="john wick" value={credentials.name} onChange={onChange} />
 
 
             </div>
+
             <div className="mb-3">
               <label htmlFor="student-email" className="form-label">Email address</label>
-              <input type="email" className="form-control input" id="student-email" aria-describedby="email" placeholder="john@example.com" value={email} onChange={({ target }) => setEmail(target.value)} />
+              <input type="email" className="form-control input" id="student-email" name='email' aria-describedby="email" placeholder="john@example.com" value={credentials.email} onChange={onChange} />
 
             </div>
             <div className="mb-3">
@@ -65,13 +105,14 @@ const SignupRecruit = (props) => {
                   type={showPassword ? "text" : "password"}
                   className="form-control input pe-5" // pe-5 adds padding for the icon
                   id="password"
+                  name='password'
                   placeholder="Min 5 Characters"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={credentials.password}
+                  onChange={onChange}
                 />
 
                 {/* Only show icon if there is text in the password field */}
-                {password.length > 0 && (
+                {credentials.password.length > 0 && (
                   <img
                     src={showPassword ? eye_open : eye_closed}
                     alt="toggle password"
@@ -83,24 +124,24 @@ const SignupRecruit = (props) => {
             </div>
             <div className="mb-3">
               <label htmlFor="recruit-role" className="form-label">Role / Designation</label>
-              <input type="text" className="form-control input" id="recruit-role" placeholder="HR, Owner" value={role} onChange={({ target }) => setRole(target.value)} />
+              <input type="text" className="form-control input" id="recruit-role" name='role' placeholder="HR, Owner" value={credentials.role} onChange={onChange} />
 
 
             </div>
             <div className="mb-3">
               <label htmlFor="recruit-company" className="form-label">Company / Institution Name</label>
-              <input type="text" className="form-control input" id="recruit-company" placeholder="Google, Microsoft" value={company} onChange={({ target }) => setCompany(target.value)} />
+              <input type="text" className="form-control input" id="recruit-company" name='company' placeholder="Google, Microsoft" value={credentials.company} onChange={onChange} />
 
 
             </div>
-           
+
+            <div className='flex flex-column my-2'>
+
+              <button type='submit' className='btn link-color-btn text-white my-2'>Create Account</button>
+              <p className='fs-6 mb-3'>Not a Recruiter? <Link to="/studlogin"><span className='link-color'>Login</span></Link>/<Link to="/studsignup"><span className='link-color'>Signup</span></Link> as a Student</p>
+            </div>
 
           </form>
-        </div>
-        <div className='flex flex-column my-2'>
-
-          <button className='btn link-color-btn text-white my-2'>Create Account</button>
-          <p className='fs-6 mb-3'>Not a Recruiter? <Link to="/studlogin"><span className='link-color'>Login</span></Link>/<Link to="/studsignup"><span className='link-color'>Signup</span></Link> as a Student</p>
         </div>
       </div>
 

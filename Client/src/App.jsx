@@ -9,6 +9,7 @@ import SignupRecruit from './Components/RecruiterAuth/SignupRecruit'
 import Dashboard from './Components/Dashboard'
 import { useState } from 'react'
 import Alert from "./Components/Alert"
+import RecruitDashboard from './Components/RecruitDashboard'
 function App() {
   const [alert, setAlert] = useState(null);
   const showAlert = (message, type) => {
@@ -35,6 +36,7 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/profilecreate" element={<ProfileCreation showAlert={showAlert}/>} />
             <Route exact path="/dashboard" element={<Dashboard showAlert={showAlert}/>} />
+            <Route exact path="/recruitDashboard" element={<RecruitDashboard showAlert={showAlert}/>} />
           </Routes>
         </Router>
       </div>

@@ -47,8 +47,7 @@ const SignupStudent = (props) => {
 
       console.error(error);
 
-      props.showAlert("Server Error", "danger");
-
+      props.showAlert("Server Error", "danger"); 
     }
 
   }

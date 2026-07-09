@@ -3,11 +3,43 @@ import "../../css/auth.css"
 import ThemeToggle from '../ThemeToggle'
 import eye_open from "../../assets/eye_open.png"
 import eye_closed from "../../assets/eye_closed.png"
-import {Link} from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+const BASE_URL = "http://localhost:5000"
+
 const LoginRecruit = (props) => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+    const [credentials, setCredentials] = useState({ email: "", password: "" });
+    const navigate = useNavigate();
+
+    const onChange = (e) => {
+        setCredentials({ ...credentials, [e.target.name]: e.target.value })
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const response = await fetch(`${BASE_URL}/api/recruitauth/recruitLogin`, {
+
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email: credentials.email, password: credentials.password })
+
+        })
+
+        const json = await response.json();
+        console.log(json);
+        if (json.success) {
+            localStorage.setItem("token", json.authToken)
+            props.showAlert("Logged-in Successfully", "success")
+            navigate("/recruitDashboard")
+        }
+        else {
+            props.showAlert("Invalid Credentials", "danger")
+        }
+    }
+
     return (
         <div className="login-wrapper custom-bg">
             <div >
@@ -40,11 +72,11 @@ const LoginRecruit = (props) => {
                     <p className='fs-6'>Don't have an Account? <Link to="/recruitsignup"><span className='link-color'>Signup</span></Link></p>
                 </div>
                 <div>
-                    <form className='auth-form'>
+                    <form className='auth-form' onSubmit={handleSubmit}>
                         <div className="mb-3">
                             <label htmlFor="recruit-email" className="form-label">Email address</label>
-                            <input type="email" className="form-control input" id="recruit-email" aria-describedby="email" placeholder="john@example.com" value={email} onChange={({target})=>setEmail(target.value)} />
-                           
+                            <input type="email" className="form-control input" id="recruit-email" aria-describedby="email" placeholder="john@example.com" value={credentials.email} name='email' onChange={onChange} />
+
                             <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                         </div>
                         <div className="mb-3">
@@ -54,13 +86,14 @@ const LoginRecruit = (props) => {
                                     type={showPassword ? "text" : "password"}
                                     className="form-control input pe-5" // pe-5 adds padding for the icon
                                     id="password"
+                                    name='password'
                                     placeholder="Min 5 Characters"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    value={credentials.password}
+                                    onChange={onChange}
                                 />
 
                                 {/* Only show icon if there is text in the password field */}
-                                {password.length > 0 && (
+                                {credentials.password.length > 0 && (
                                     <img
                                         src={showPassword ? eye_open : eye_closed}
                                         alt="toggle password"
@@ -71,13 +104,13 @@ const LoginRecruit = (props) => {
                             </div>
                         </div>
 
-                    </form>
-                </div>
-                <div className='flex flex-column'>
+                        <div className='flex flex-column'>
 
-                    <div className='my-2 forgot'>Forgot your password ? </div>
-                    <button className='btn link-color-btn text-white my-1'>Login</button>
-                    <p className='fs-6 my-2'>Not a Recruiter? <Link to="/studlogin"><span className='link-color'>Login</span></Link>/<Link to="/studsignup"><span className='link-color'>Signup</span></Link> as a Student</p>
+                            <div className='my-2 forgot'>Forgot your password ? </div>
+                            <button className='btn link-color-btn text-white my-1'>Login</button>
+                            <p className='fs-6 my-2'>Not a Recruiter? <Link to="/studlogin"><span className='link-color'>Login</span></Link>/<Link to="/studsignup"><span className='link-color'>Signup</span></Link> as a Student</p>
+                        </div>
+                    </form>
                 </div>
             </div>
 
