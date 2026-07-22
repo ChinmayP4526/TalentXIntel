@@ -55,7 +55,8 @@
     color: white;
 }
 .dashboard-nav-links li a.active-link {
-    color: var(--login-nav);
+    /* color: var(--login-nav); */
+    color: var(--nav-links);
     /* border-bottom: 2px solid #a855f7; */
     padding-bottom: 4px;
 }

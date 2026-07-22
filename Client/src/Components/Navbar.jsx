@@ -1,15 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Logo_Light from "../assets/TalentXIntel Logos/TalentXIntel_Light.png"
+import Logo_Dark from "../assets/TalentXIntel Logos/TalentXIntel_Dark.png"
 import "../css/navbar.css"
 import { Link, useNavigate } from "react-router-dom"
 import ThemeToggle from "./ThemeToggle"
 import IdentityModal from './Modal/IdentityModal'
 
+import { useTheme } from "../context/ThemeContext";
 const Navbar = () => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [actionType, setActionType] = useState("")
+  const { theme } = useTheme();
+ 
 
+  
   const handleClick = (type) => {
     setActionType(type);
     setShowModal(true)
@@ -35,7 +40,7 @@ const Navbar = () => {
           {/* Left: Logo */}
           <Link className="navbar-brand d-flex align-items-center gap-2 text-white" to="/">
             <img
-              src={Logo_Light}
+              src={theme === "dark" ? Logo_Dark : Logo_Light}
               alt="Logo"
               className="logo"
             />
